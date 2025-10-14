@@ -21,11 +21,16 @@ public class Piloto {
         this.DNI = DNI;
     }
 
+    public String getDNI(){
+        return this.DNI;
+    }
+
     public static Piloto crearPiloto(UUID licencia, String nombre, LocalDate fechaNacto, String DNI){
         //politicas mediante exceptios
         if(Piloto.getEdad(fechaNacto)<18){
-            new ExceptionMayorEdad("El piloto debe ser mayor de edad");
+            throw new ExceptionMayorEdad("El piloto debe ser mayor de edad");
         }
+
         return new Piloto(licencia,nombre,fechaNacto,DNI);
     }
 
