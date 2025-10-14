@@ -6,5 +6,5 @@ import java.time.LocalDate;
 import java.util.UUID;
 
 public interface RegistrarPilotoInput {
-    UUID crearPiloto(String nombre, LocalDate fechaNacto,String DNI);
+    UUID registrarPiloto(String nombre, LocalDate fechaNacto,String DNI);
 }

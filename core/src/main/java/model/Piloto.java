@@ -25,6 +25,10 @@ public class Piloto {
         return this.DNI;
     }
 
+    public UUID getLicencia(){
+        return this.licencia;
+    }
+
     public static Piloto crearPiloto(UUID licencia, String nombre, LocalDate fechaNacto, String DNI){
         //politicas mediante exceptios
         if(Piloto.getEdad(fechaNacto)<18){
@@ -39,4 +43,10 @@ public class Piloto {
         return Period.between(fechaNacto,LocalDate.now()).getYears();
     }
 
+    @Override
+    public String toString() {
+        return "Nombre del piloto: "+this.nombre+", licencia: "+this.licencia+" edad: "+getEdad(this.fechaNacto)+", DNI: "+this.DNI;
+    }
+
+    //Nombre del piloto: ,licencia: ,edad: ,DNI:
 }

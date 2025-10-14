@@ -17,5 +17,8 @@ public class TestUseCase {
     public void TestRegistarPiloto_Success(){
 
         RegistrarPilotoInput useCase= new RegistrarPilotoUseCase(guardarPiloto);
+
+
+
     }
 }
