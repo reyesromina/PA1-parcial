@@ -1,8 +1,10 @@
 package output;
 
+import model.Piloto;
+
 import java.util.UUID;
 
 public interface GuardarPiloto {
     Boolean existePiloto(String DNI);
-    UUID registroExitoso();
+    Boolean registroExitoso(Piloto piloto);
 }

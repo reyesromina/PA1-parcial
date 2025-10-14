@@ -1,6 +1,7 @@
 package usecase;
 
 import exception.ExceptionPiloto;
+import exception.ExceptionPilotoPersistencia;
 import exception.ExceptionYaExistePiloto;
 import input.RegistrarPilotoInput;
 import model.Piloto;
@@ -26,15 +27,17 @@ public class RegistrarPilotoUseCase implements RegistrarPilotoInput {
         if(guardarPiloto.existePiloto(DNI)){
             throw new ExceptionYaExistePiloto("Piloto ya registrado");
         }
-        try {
-            Piloto piloto=crearPiloto(UUID.randomUUID(),nombre,fechaNacto,DNI);
 
-            return piloto.getLicencia();
+        Piloto piloto=crearPiloto(UUID.randomUUID(),nombre,fechaNacto,DNI);
 
-        }catch (ExceptionPiloto e){}
+        if(!guardarPiloto.registroExitoso(piloto)){
+            throw new ExceptionPilotoPersistencia("Algo salio mal,no se registra persistencia del piloto");
+        }
+
+
+        return piloto.getLicencia();
 
 
 
-        return null;
     }
 }
